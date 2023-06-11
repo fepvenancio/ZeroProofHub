@@ -1,0 +1,11 @@
+This is a personal project, to be developed on my free time to help me understand and evolve
+my solidity and EVM knowledge. 
+
+I decided to play with this after reading Vitaliks Transitions blog post.
+
+Feel free to do whatever u want with the code or contribute to what's here. 
+
+ZkPrivacyHub is a novel privacy-preserving architecture for Ethereum Layer 2 solutions, 
+leveraging zk-SNARKs to facilitate private transactions. This library aims to create a 
+seamless integration of privacy-focused techniques with smart contract wallets, to enable 
+a new paradigm of blockchain interaction that prioritizes user anonymity and data protection.
