@@ -13,7 +13,7 @@ contract KeyRegistryTest is Test {
         keyRegistry = new KeyRegistry();
     }
 
-    function testRegisterKey() public {
+    function test_RegisterKey() public {
         bytes memory publicKey = "0x123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0";
         address proxyContract = address(this);
         keyRegistry.registerKey(publicKey, proxyContract);
@@ -22,7 +22,7 @@ contract KeyRegistryTest is Test {
         assertEq(retrievedProxyContract, proxyContract, "The proxy contract should match the one that was set");
     }
 
-    function testGetKey() public {
+    function test_GetKey() public {
         bytes memory publicKey = "0x123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0";
         address proxyContract = address(this);
         keyRegistry.registerKey(publicKey, proxyContract);
@@ -31,7 +31,7 @@ contract KeyRegistryTest is Test {
         assertEq(retrievedProxyContract, proxyContract, "The proxy contract should match the one that was set");
     }
 
-    function testUpdateKey() public {
+    function test_UpdateKey() public {
         bytes memory publicKey1 = "0x123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0";
         bytes memory publicKey2 = "0xabcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789";
         address proxyContract = address(this);
@@ -42,11 +42,11 @@ contract KeyRegistryTest is Test {
         assertEq(retrievedProxyContract, proxyContract, "The proxy contract should match the one that was set");
     }
 
-    function testCannotRegisterTwice() public {
+    function test_CannotRegisterTwice() public {
         bytes memory publicKey = "0x123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0";
         address proxyContract = address(this);
         keyRegistry.registerKey(publicKey, proxyContract);
         (bool success,) = address(keyRegistry).call(abi.encodePacked(keyRegistry.registerKey.selector, publicKey, proxyContract));
-        //assert.isFalse(success, "Second registration should fail");
+        assertEq(success, false, "Second registration should fail");
     }
 }
